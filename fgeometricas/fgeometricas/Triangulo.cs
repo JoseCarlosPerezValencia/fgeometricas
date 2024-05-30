@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,31 +8,12 @@ namespace fgeometricas
 {
     class Triangulo: Figuras
     {
-        //esta clase requiere dos lados, una base y una altura para funcionar 
+        //esta clase requiere dos lados, pero se usara unicamente el lado1 (el lado padre) una base y una altura para funcionar 
         //creamos el lado2
-        private float lado2;
         private float altura;
-        private float raiz;
+        private float raiz; //el nombre raiz sera la base ya que "base" es un comando de visual
         //crea un constructor para triangulo
-        public float Lado2
-        {
-            set
-            {
-                //pregunta si el lado <0
-                if (value < 0)
-                {
-                    lado2 = 0; //manda el valor a 0
-                } //NO EXISTEN LADOS NEGATIVOS
-                else
-                {
-                    lado2 = value;
-                }
-            }
-            get //obtener el valor
-            {
-                return lado2; //regresa o cacha el valor de la variable lado2
-            }
-        }
+       
         public float Altura 
             /*practicamente para poder calcular el area se necesita una altura para la formula general
              * que es b*a/2 y pues hice una simple reinterpretacion de codigo y en vez de crear "lado",
@@ -75,14 +56,13 @@ namespace fgeometricas
             }
         }
         //usamos el constructor de la clase padre
-        public Triangulo(float lado1, float lado2, float altura, float raiz)
+        public Triangulo(float lado1, float altura, float raiz)
         { //lado se va a leer de la caja de texto con
             //usando el boton guardar
             this.Lado1 = lado1; // hace que unicamente el valor la
                                 //cantidad del lado sea disponible
                                 //para la clase rectangulo, cuando no se use recatangulo
                                 //la variable sera=0
-            this.Lado2 = lado2;
             this.Altura = altura;
             this.Raiz = raiz;
         }
@@ -95,7 +75,7 @@ namespace fgeometricas
         }
         public override float perimetro()
         {
-            return Lado1 + Lado2 + Raiz;
+            return Lado1 + Lado1 + Raiz;
         }
         public override float volumen()
         {
@@ -104,4 +84,3 @@ namespace fgeometricas
         }
     }
 }
-
